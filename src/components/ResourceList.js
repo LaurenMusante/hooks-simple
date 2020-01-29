@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+const useResources = (resource) => {
+ //move everthing (all hook-related logic) from "useState() to the end of "useEffect()"" here, then return "resources" at the end of this function. Then, call function under ResourceList: const resources = useResources(resource) where "resource" is the user input. 
+//  THIS ENABLES US TO REUSE THIS SAME LOGIC IN ANY COMPONENT!
+}
 const ResourceList = ({resource}) => {
 	const [resources, setResources] = useState([]);
-	//initializes our state to be an empty array and gives us access to that initial state with 'resources' and we can change it using 'set
+	//initializes our state to be an empty array and gives us access to that initial state with 'resources' 
 	const fetchResource = async (resource) => {
 		//note: "resource" is the prop: will be either 'posts' or 'todos'
 		const response = await axios.get(`https://jsonplaceholder.typicode.com/${resource}`
