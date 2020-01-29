@@ -1,6 +1,6 @@
 import React from 'react';
 import useResources from './useResources'
-
+//the following is a "custom hook"
 
 
 const ResourceList = ({resource}) => {
