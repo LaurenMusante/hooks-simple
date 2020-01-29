@@ -17,13 +17,15 @@ const ResourceList = ({resource}) => {
 		fetchResource(resource); //resource is the prop
 	}, [resource])
 	//[resource] is the second argument that we are passing into useEffect. When it changes, useEffect is called. If I click on "posts" over and over again, it doesn't change the [resource] so it won't call useEffect/make another API call again. SO this replaces the "if prevProps !== props, then make API call".
+	//***note that you can't make the API call directly from within useEffect. Instead, it 's put into another function (fetchResource) and added into useEffect(). This is because useEffect must return a 'cleanup function' or 'nothing'. Our API call function returns a promise, so it won't work within useEffect().
 
 		return (
-			<div>
+			<ul>
 				{/* only works w/in a class component: {this.props.resource} becomes... */}
-				{resources.length}
+				{resources.map(record => <li key = {record.id}>{record.title}</li>)}
+				{/* note that .map requires a key */}
 		
-			</div>
+			</ul>
 		)
 	
 }
